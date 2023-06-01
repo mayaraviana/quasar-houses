@@ -3,7 +3,7 @@
     <q-layout>
       <q-layout-header class="row">
         <!-- Primeira coluna -->
-        <div class="column">
+        <div class="column q-pa-sm">
           <div class="content">
             <h1>
               Welcome to <span class="orange">Search and Stay</span>,<br />
@@ -61,7 +61,7 @@
         </div>
 
         <!-- Segunda coluna -->
-        <div class="column">
+        <div class="column md">
           <div class="image-container">
             <!-- Imagem que preenche metade da tela -->
             <img
