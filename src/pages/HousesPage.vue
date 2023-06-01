@@ -22,89 +22,26 @@
       </div>
     </div>
 
-    <q-table
-      :rows="houseRules"
-      :columns="columns"
-      row-key="id"
-      :pagination="true"
-      :rows-per-page-options="[10]"
-      @request="fetchHouseRules"
-    ></q-table>
+    <TableComponent @ruleDeleted="updateRuleList" />
   </div>
 </template>
 
 <script>
-import axios from 'axios';
+import TableComponent from './../components/TableComponent.vue';
 
 export default {
+  components: {
+    TableComponent,
+  },
   data() {
     return {
       loggedIn: true,
-      houseRules: [],
-      columns: [
-        {
-          name: 'id',
-          required: true,
-          label: 'ID',
-          align: 'left',
-          field: 'id',
-          sortable: true,
-        },
-        {
-          name: 'name',
-          required: true,
-          label: 'Name',
-          align: 'left',
-          field: 'name',
-          sortable: true,
-        },
-        {
-          name: 'active',
-          required: true,
-          label: 'Active',
-          align: 'left',
-          field: 'active',
-          sortable: true,
-        },
-        // Add other columns as needed
-      ],
-      pagination: {
-        total: 0,
-        count: 0,
-        per_page: 10,
-        current_page: 1,
-        total_pages: 1,
-      },
+      rules: [],
     };
   },
-  mounted() {
-    this.fetchHouseRules();
-  },
   methods: {
-    fetchHouseRules(request) {
-      const page = request ? request.pagination.page : 1;
-      const limit = request ? request.pagination.rowsPerPage : 10;
-
-      const config = {
-        headers: {
-          Authorization: `Bearer ${process.env.AUTHORIZATION}`,
-        },
-        params: {
-          page: page - 1,
-          limit: limit,
-        },
-      };
-
-      axios
-        .get(`${process.env.API_URL}/house_rules`, config)
-        .then((response) => {
-          const responseData = response.data.data;
-          this.houseRules = responseData.entities;
-          this.pagination = responseData.pagination;
-        })
-        .catch((error) => {
-          console.error(error);
-        });
+    updateRuleList(ruleId) {
+      this.rules = this.rules.filter((rule) => rule.id !== ruleId);
     },
   },
 };

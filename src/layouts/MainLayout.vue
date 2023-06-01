@@ -7,9 +7,6 @@
             <img src="./../assets/logo.png" alt="Logo Search and Stay" />
           </div>
         </q-toolbar-title>
-        <q-avatar v-if="loggedIn">
-          <img src="https://cdn.quasar.dev/img/avatar.png" />
-        </q-avatar>
       </q-toolbar>
     </q-header>
 
