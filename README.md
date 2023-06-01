@@ -1,7 +1,5 @@
 <p align="center">
-  <a href="https://github.com/github_username/repo_name">
-    <img src="https://github.com/LDI-Ufes/livro-digital-v4/blob/main/img/icon-192.png" alt="Logo" width="80" height="80">
-  </a>
+  
 
   <h3 align="center">Search and Stay - Desafio Front-end</h3>
 
